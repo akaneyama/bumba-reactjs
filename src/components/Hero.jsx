@@ -151,17 +151,16 @@ function Hero() {
             </motion.div>
 
             {/* gambare disini */}
-            <div className="hidden lg:flex items-end justify-center ml-4 w-full h-full">
-               <motion.img
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                src={slides[activeIndex].image} 
-                alt={slides[activeIndex].headline}
-               
-                className="w-auto h-auto max-h-[200vh]"
-              />
-            </div>
+           <div className="flex items-end justify-center ml-4 w-full h-full ">
+            <motion.img
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              src={slides[activeIndex].image}
+              alt={slides[activeIndex].headline}
+              className="w-full h-full object-cover sd:hidden"
+            />
+          </div>
           </motion.div>
         </AnimatePresence>
 
