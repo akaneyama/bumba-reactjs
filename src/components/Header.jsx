@@ -42,7 +42,7 @@ function Header() {
   };
 
   return (
-<header className="sticky top-0 z-50 transition-all duration-300 bg-white/35 backdrop-blur-lg shadow-md ${
+<header className="sticky top-0 z-50 transition-all duration-300    ${
         isScrolled ? 'bg-white/95 backdrop-blur-lg shadow-md' : 'bg-transparent'
       }`">
   {/* <header 
@@ -58,7 +58,7 @@ function Header() {
             <img 
               src={logobumibaik} 
               alt="Logo Bumi Baik" 
-              className="h-16 w-auto object-contain hover:scale-105 transition-transform duration-300"
+              className="h-20 w-auto object-contain hover:scale-105 transition-transform duration-300"
             />
           </a>
 

@@ -115,7 +115,7 @@ function Hero() {
           >
             {/* --- Konten Teks --- */}
             <motion.div 
-              className="w-full lg:w-1/2 flex flex-col justify-center text-center lg:text-left p-4"
+              className="w-full lg:w-1/2 flex flex-col justify-center text-center lg:text-left p-10"
               variants={contentVariants}
               initial="hidden"
               animate="visible"
@@ -142,7 +142,7 @@ function Hero() {
             </motion.div>
 
             {/* --- Konten Gambar --- */}
-            <div className="w-full lg:w-1/2 h-1/2 lg:h-full flex items-end justify-center">
+            <div className="w-full lg:w-1/2 h-1/2 lg:h-full flex items-end justify-center mr-8">
               <motion.img
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
