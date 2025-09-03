@@ -62,7 +62,7 @@ const itemVariants = {
   visible: { y: 0, opacity: 1, transition: { type: 'spring', stiffness: 100 } },
 };
 
-function Hero() {
+function TampilanAwal() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(0);
 
@@ -113,9 +113,9 @@ function Hero() {
             transition={{ type: "tween", duration: 0.5, ease: "easeInOut" }}
             className="w-full h-full absolute inset-0 flex flex-col-reverse lg:flex-row items-center justify-center px-4"
           >
-            {/* --- Konten Teks --- */}
+           
             <motion.div 
-              className="w-full lg:w-1/2 flex flex-col justify-center text-center lg:text-left p-10"
+              className="w-full lg:w-1/2 flex flex-col justify-center text-center lg:text-left p-6"
               variants={contentVariants}
               initial="hidden"
               animate="visible"
@@ -135,13 +135,13 @@ function Hero() {
               <motion.a 
                 variants={itemVariants}
                 href={slides[activeIndex].buttonLink}
-                className="mt-8 self-center lg:self-start bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                className="mt-4 self-center lg:self-start bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-8 rounded-full text-lg transition-transform duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
               >
                 {slides[activeIndex].buttonText}
               </motion.a>
             </motion.div>
 
-            {/* --- Konten Gambar --- */}
+         
             <div className="w-full lg:w-1/2 h-1/2 lg:h-full flex items-end justify-center mr-8">
               <motion.img
                 initial={{ opacity: 0, y: 50 }}
@@ -163,7 +163,7 @@ function Hero() {
           <HiChevronRight className="h-6 w-6 md:h-8 md:w-8 text-gray-700" />
         </button> */}
         
-        {/* --- Indikator Titik (Dots) --- */}
+        {/* yang buat tombol dibawah */}
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex space-x-3">
           {slides.map((_, index) => (
             <button
@@ -181,4 +181,4 @@ function Hero() {
   );
 }
 
-export default Hero;
+export default TampilanAwal;

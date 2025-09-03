@@ -1,24 +1,21 @@
 import React, { useState, useEffect } from "react";
 import logobumibaik from '../assets/bumibaiklogo2.png';
-// Anda bisa menyimpan ikon sosial di dalam komponen jika mau, atau tetap import
-// import instagram from '../assets/instagram.svg';
-// import whatsapp from '../assets/whatsapp.svg';
 import { HiMenu, HiX } from 'react-icons/hi';
+import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
 
-// --- Langkah 1: Definisikan link navigasi dalam sebuah array ---
 const navLinks = [
   { href: "#tentang", label: "Tentang" },
   { href: "#layanan", label: "Layanan" },
   { href: "#blog", label: "Blog" },
   { href: "#faq", label: "FAQ" },
   { href: "#kontak", label: "Kontak" },
+  
 ];
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // --- Efek untuk mengubah background header saat di-scroll ---
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
@@ -27,33 +24,36 @@ function Header() {
         setIsScrolled(false);
       }
     };
-
     window.addEventListener('scroll', handleScroll);
-
-    // Cleanup function untuk menghapus event listener
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
-  // Fungsi untuk menutup menu mobile saat link di-klik
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+        document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
+
   const handleLinkClick = () => {
     setIsOpen(false);
   };
 
   return (
-<header className="sticky top-0 z-50 transition-all duration-300    ${
+    <header className={`sticky top-0 z-50 transition-all duration-300 ${
         isScrolled ? 'bg-white/95 backdrop-blur-lg shadow-md' : 'bg-transparent'
-      }`">
-  {/* <header 
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/95 backdrop-blur-lg shadow-md' : 'bg-transparent'
-      }`}
-    > */}
+      }`
+    }>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-       <nav className="flex items-center justify-between h-20 ">
-          
-
+        <nav className="flex items-center justify-between h-20">
           <a href="#home" className="flex-shrink-0">
             <img 
               src={logobumibaik} 
@@ -61,8 +61,6 @@ function Header() {
               className="h-20 w-auto object-contain hover:scale-105 transition-transform duration-300"
             />
           </a>
-
-
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <a 
@@ -74,8 +72,6 @@ function Header() {
               </a>
             ))}
           </div>
-
-     
           <div className="flex items-center space-x-4">
             <a 
               href="#donasi" 
@@ -83,7 +79,6 @@ function Header() {
             >
               Donasi
             </a>
-            
             <button 
               onClick={() => setIsOpen(!isOpen)} 
               className="md:hidden text-gray-800 text-3xl focus:outline-none z-50"
@@ -94,30 +89,66 @@ function Header() {
         </nav>
       </div>
 
-      {/* --- Menu Mobile (Overlay) --- */}
-      <div 
-        className={`fixed inset-0 bg-white z-40 transform transition-transform duration-300 ease-in-out md:hidden ${
+      <div
+        className={`fixed inset-0 z-40 transform transition-transform duration-300 ease-in-out md:hidden ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
+        } 
+        /* --- Latar Belakang Gradient --- */
+        bg-gradient-to-b from-green-50 to-white
+        `}
       >
-        <div className="flex flex-col items-center justify-center h-full space-y-8">
-          {navLinks.map((link) => (
-            <a 
-              key={link.label} 
-              href={link.href} 
+        <div className="flex flex-col h-full safe-area-padding">
+          {/* seng dari array menu diatas */}
+          <div className="flex flex-col items-center justify-center flex-grow pt-20">
+            {navLinks.map((link, index) => (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={handleLinkClick}
+               
+                className={`
+                  block py-4 text-3xl font-semibold text-gray-800 hover:text-green-600
+                  transition-all duration-500 ease-out
+                  ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
+                `}
+                /* --- animasi keatas wer wer --- */
+                style={{ transitionDelay: `${index * 100 + 300}ms` }}
+              >
+                {link.label}
+              </a>
+            ))}
+            
+            {/* --- tambah i garis --- */}
+            <hr className={`my-6 w-1/2 border-gray-300 transition-opacity duration-500 ease-out ${isOpen ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: '800ms' }} />
+
+            <a
+              href="#donasi"
               onClick={handleLinkClick}
-              className="text-2xl font-semibold text-gray-800 hover:text-green-600"
+              className={`
+                bg-green-500 text-white font-bold py-3 px-10 rounded-full text-lg hover:bg-green-600 transition-all duration-500 shadow-lg
+                ${isOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}
+              `}
+              style={{ transitionDelay: '900ms' }}
             >
-              {link.label}
+              Donasi
             </a>
-          ))}
-          <a 
-            href="#donasi" 
-            onClick={handleLinkClick}
-            className="mt-8 bg-green-500 text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-green-600 transition-all duration-300 shadow-md"
+          </div>
+
+          {/* --- bawah seng biasane buat instagram --- */}
+          <div className={`
+            flex justify-center items-center space-x-6 p-8
+            transition-opacity duration-500 ease-out
+            ${isOpen ? 'opacity-100' : 'opacity-0'}
+            `}
+            style={{ transitionDelay: '1000ms' }}
           >
-            Donasi
-          </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-green-600">
+              <FaInstagram size={28} />
+            </a>
+            <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-green-600">
+              <FaWhatsapp size={28} />
+            </a>
+          </div>
         </div>
       </div>
     </header>
