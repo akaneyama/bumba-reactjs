@@ -1,93 +1,125 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logobumibaik from '../assets/bumibaiklogo2.png';
-import email from '../assets/email.svg';
-import lokasipin from '../assets/location.svg';
-import instagram from '../assets/instagram.svg';
-import whatsapp from '../assets/whatsapp.svg';
+// Anda bisa menyimpan ikon sosial di dalam komponen jika mau, atau tetap import
+// import instagram from '../assets/instagram.svg';
+// import whatsapp from '../assets/whatsapp.svg';
 import { HiMenu, HiX } from 'react-icons/hi';
+
+// --- Langkah 1: Definisikan link navigasi dalam sebuah array ---
+const navLinks = [
+  { href: "#tentang", label: "Tentang" },
+  { href: "#layanan", label: "Layanan" },
+  { href: "#blog", label: "Blog" },
+  { href: "#faq", label: "FAQ" },
+  { href: "#kontak", label: "Kontak" },
+];
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
-    
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // --- Efek untuk mengubah background header saat di-scroll ---
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Cleanup function untuk menghapus event listener
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  // Fungsi untuk menutup menu mobile saat link di-klik
+  const handleLinkClick = () => {
+    setIsOpen(false);
+  };
+
   return (
-    <header className="sticky top-0 z-10 p-4">
-      
+<header className="sticky top-0 z-50 transition-all duration-300 bg-white/35 backdrop-blur-lg shadow-md ${
+        isScrolled ? 'bg-white/95 backdrop-blur-lg shadow-md' : 'bg-transparent'
+      }`">
+  {/* <header 
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-white/95 backdrop-blur-lg shadow-md' : 'bg-transparent'
+      }`}
+    > */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+       <nav className="flex items-center justify-between h-20 ">
+          
 
-   
-<div className="hidden sm:flex container mx-auto py-2 px-2 items-center mb-4 justify-between">
+          <a href="#home" className="flex-shrink-0">
+            <img 
+              src={logobumibaik} 
+              alt="Logo Bumi Baik" 
+              className="h-16 w-auto object-contain hover:scale-105 transition-transform duration-300"
+            />
+          </a>
 
-  <div className="flex items-center space-x-6 text-sm text-gray-600">
- 
-    <div className="flex items-center space-x-2">
-      <img src={lokasipin} className="h-4 w-4 " alt="Lokasi" />
-      <span className="text-md font-semibold text-black">Graha Polinema 4th Floor, Jl. Soekarno Hatta No.9, Malang.</span>
-    </div>
-    
 
-    <div className="flex items-center space-x-2">
-      <img src={email} className="h-4" alt="Email" />
-      <a href="mailto:business@bumibaik.com" className="hover:text-green-500 transition-colors text-md font-semibold text-black">
-        business@bumibaik.com
-      </a>
-    </div>
-  </div>
+          <div className="hidden md:flex items-center space-x-8">
+            {navLinks.map((link) => (
+              <a 
+                key={link.label} 
+                href={link.href} 
+                className="font-semibold text-gray-700 hover:text-green-600 transition-colors duration-300"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
 
-  <div className="flex items-center space-x-4">
+     
+          <div className="flex items-center space-x-4">
+            <a 
+              href="#donasi" 
+              className="hidden md:inline-block bg-green-500 text-white font-bold py-2 px-6 rounded-full hover:bg-green-600 transition-all duration-300 shadow-sm"
+            >
+              Donasi
+            </a>
+            
+            <button 
+              onClick={() => setIsOpen(!isOpen)} 
+              className="md:hidden text-gray-800 text-3xl focus:outline-none z-50"
+            >
+              {isOpen ? <HiX /> : <HiMenu />}
+            </button>
+          </div>
+        </nav>
+      </div>
 
-    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-      <img src={instagram} className="h-5 w-5 hover:opacity-75 transition-opacity" alt="Instagram" />
-    </a>
-    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-
-      <img src={whatsapp} className="h-5 w-5 hover:opacity-75 transition-opacity" alt="Facebook" />
-    </a>
-  </div>
-  
-</div>
-      
-      
-    
-      <nav className="container mx-auto relative flex justify-center sm:jus items-center py-2
-               bg-white/80 backdrop-blur-sm rounded-xl shadow-lg">
-
-                    <div className="hidden sm:flex items-center space-x-16">
-                    <a href="#home">
-                        <img 
-                        src={logobumibaik} 
-                        alt="Logo Bumi Baik" 
-                        className="h-16  object-contain hover:scale-110 transition-transform duration-300"
-                        />
-                    </a>
-                        <a href="#tentang" className="text-md text-black-600 hover:text-green-500 font-bold transition-colors">Tentang</a>
-                        <a href="#layanan" className="text-md text-black-600 hover:text-green-500 font-bold transition-colors">Layanan</a>
-                        <a href="#blog" className="text-md text-black-600 hover:text-green-500 font-bold transition-colors">Blog</a>
-                        <a href="#faq" className="text-md text-black-600 hover:text-green-500 font-bold transition-colors">FAQ</a>
-                        <a href="#kontak" className="text-md text-black-600 hover:text-green-500 font-bold transition-colors">Kontak</a>
-                        <a href="#donasi" className="text-md text-black-600 hover:text-green-500 font-bold transition-colors">Donasi</a>
-                    </div>
-
-                    <div className="sm:hidden flex items-end">
-                        <button onClick={() => setIsOpen(!isOpen)} className="text-gray-700 text-3xl focus:outline-none">
-                        {isOpen ? <HiX /> : <HiMenu />}
-                        </button>
-                    </div>
-                    </nav>
-
-   
-      {isOpen && (
-        <div className="sm:hidden container mx-auto px-8 ">
-       
-          <ul className="absolute inset-x-4 mt-2 rounded-xl bg-white rounded-b-lg shadow-lg py-2 z-20">
-            <li><a href="#fitur" className="block px-6 py-2 text-gray-700 hover:bg-gray-100">Tentang</a></li>
-            <li><a href="#harga" className="block px-6 py-2 text-gray-700 hover:bg-gray-100">Layanan</a></li>
-            <li><a href="#tentang" className="block px-6 py-2 text-gray-700 hover:bg-gray-100">Blog</a></li>
-            <li><a href="#contact" className="block px-6 py-2  text-gray-700 hover:bg-gray-100">FAQ</a></li>
-            <li><a href="#contact" className="block px-6 py-2  text-gray-700 hover:bg-gray-100">Kontak</a></li>
-            <li><a href="#contact" className="block px-6 py-2  text-gray-700 hover:bg-gray-100">Donasi</a></li>
-          </ul>
+      {/* --- Menu Mobile (Overlay) --- */}
+      <div 
+        className={`fixed inset-0 bg-white z-40 transform transition-transform duration-300 ease-in-out md:hidden ${
+          isOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
+        <div className="flex flex-col items-center justify-center h-full space-y-8">
+          {navLinks.map((link) => (
+            <a 
+              key={link.label} 
+              href={link.href} 
+              onClick={handleLinkClick}
+              className="text-2xl font-semibold text-gray-800 hover:text-green-600"
+            >
+              {link.label}
+            </a>
+          ))}
+          <a 
+            href="#donasi" 
+            onClick={handleLinkClick}
+            className="mt-8 bg-green-500 text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-green-600 transition-all duration-300 shadow-md"
+          >
+            Donasi
+          </a>
         </div>
-      )}
-
+      </div>
     </header>
   );
 }
