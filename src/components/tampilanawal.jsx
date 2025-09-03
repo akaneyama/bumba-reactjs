@@ -140,7 +140,8 @@ function TampilanAwal() {
             </motion.div>
 
          
-            <div className="w-full lg:w-1/2 h-1/2 lg:h-full flex items-end justify-center mr-8">
+            {/* <div className="w-full lg:w-1/2 h-1/2 lg:h-full flex items-end justify-center mr-8"> */}
+            <div className="hidden lg:flex lg:w-1/2 lg:h-full items-center justify-center">
             <LazyMotionImage
              
               initial={{ opacity: 0, y: 50 }}
