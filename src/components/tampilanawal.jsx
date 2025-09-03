@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-
+import LazyMotionImage from '../components/LazyMotionImage'; 
 import backgroundBumiBaik from '../assets/backgroundbumibaik.jpg'; 
 import imageSlide1 from '../assets/ciwi1.png';
 import imageSlide2 from '../assets/ciwi2.png';
@@ -52,7 +52,7 @@ const contentVariants = {
     opacity: 1,
     transition: {
       staggerChildren: 0.2,
-      delayChildren: 0.3, // Memberi sedikit jeda sebelum teks muncul
+      delayChildren: 0.3, 
     },
   },
 };
@@ -72,7 +72,6 @@ function TampilanAwal() {
     setActiveIndex(index);
   };
 
-  // useCallback untuk mencegah fungsi dibuat ulang pada setiap render
   const goToNext = useCallback(() => {
     setDirection(1);
     setActiveIndex((prevIndex) => (prevIndex + 1) % slides.length);
@@ -98,7 +97,6 @@ function TampilanAwal() {
         backgroundPosition: 'center',
       }}
     >
-      {/* Lapisan overlay untuk kontras */}
       <div className="absolute inset-0 bg-white/40 backdrop-blur-sm" />
 
       <div className="relative container mx-auto h-full flex items-center justify-center">
@@ -143,15 +141,19 @@ function TampilanAwal() {
 
          
             <div className="w-full lg:w-1/2 h-1/2 lg:h-full flex items-end justify-center mr-8">
-              <motion.img
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                src={slides[activeIndex].image}
-                alt={slides[activeIndex].headline}
-                className="max-h-full max-w-full object-contain lg:w-full lg:h-full lg:object-cover"
-              />
-            </div>
+            <LazyMotionImage
+             
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+
+    
+              src={slides[activeIndex].image}
+              alt={slides[activeIndex].headline}
+
+              className="max-h-full max-w-full object-contain lg:w-full lg:h-full lg:object-cover"
+            />
+          </div>
           </motion.div>
         </AnimatePresence>
 
