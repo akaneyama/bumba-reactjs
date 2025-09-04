@@ -11,7 +11,7 @@ function MainLayout() {
  
     const timer = setTimeout(() => {
       setIsLoading(false)
-    }, 2500); 
+    }, 1000); 
 
     return () => clearTimeout(timer);
   }, []);

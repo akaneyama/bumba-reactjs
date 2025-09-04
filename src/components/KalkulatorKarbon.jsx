@@ -39,7 +39,6 @@ function KalkulatorKarbon() {
       bbm: parseInt(penggunaanBBM),
       lpg: parseInt(penggunaanLPG),
     };
-
   
     try {
 

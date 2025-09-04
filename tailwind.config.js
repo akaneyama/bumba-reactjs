@@ -7,7 +7,7 @@ module.exports = {
   ],
   theme: {
     extend: {
-      // TAMBAHKAN KODE DI BAWAH INI
+      // MULAI TAMBAHKAN DARI SINI
       keyframes: {
         'fade-in-up': {
           '0%': {
@@ -23,7 +23,7 @@ module.exports = {
       animation: {
         'fade-in-up': 'fade-in-up 0.5s ease-out forwards',
       }
-      // AKHIR DARI KODE YANG DITAMBAHKAN
+      // SELESAI
     },
   },
   plugins: [],
