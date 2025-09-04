@@ -140,7 +140,7 @@ function TampilanAwal() {
             </motion.div>
 
          
-            {/* <div className="w-full lg:w-1/2 h-1/2 lg:h-full flex items-end justify-center mr-8"> */}
+            
             <div className="hidden lg:flex lg:w-1/2 lg:h-full items-center justify-center">
             <LazyMotionImage
              
@@ -158,15 +158,7 @@ function TampilanAwal() {
           </motion.div>
         </AnimatePresence>
 
-      
-        {/* <button onClick={goToPrev} className="absolute top-1/2 -translate-y-1/2 left-1 md:left-4 z-20 p-2 bg-white/60 backdrop-blur-sm rounded-full shadow-md hover:bg-white transition-colors duration-300">
-          <HiChevronLeft className="h-6 w-6 md:h-8 md:w-8 text-gray-700" />
-        </button>
-        <button onClick={goToNext} className="absolute top-1/2 -translate-y-1/2 right-1 md:right-4 z-20 p-2 bg-white/60 backdrop-blur-sm rounded-full shadow-md hover:bg-white transition-colors duration-300">
-          <HiChevronRight className="h-6 w-6 md:h-8 md:w-8 text-gray-700" />
-        </button> */}
-        
-        {/* yang buat tombol dibawah */}
+     
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex space-x-3">
           {slides.map((_, index) => (
             <button

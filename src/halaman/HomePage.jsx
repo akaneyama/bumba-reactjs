@@ -10,8 +10,8 @@ function HomePage() {
     <>
     <TampilanAwal />
     <KalkulatorKarbon />
-    <Pohontermonitor/>
-    <ProgramKami/>
+    {/* <Pohontermonitor/>
+    <ProgramKami/> */}
   </>
 
   );
