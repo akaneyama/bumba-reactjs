@@ -4,6 +4,7 @@ import KalkulatorKarbon from '../components/KalkulatorKarbon';
 import Pohontermonitor from '../components/Pohontermonitor';
 import ProgramKami from '../components/ProgramKami';
 import MitraKami from '../components/MitraKami';
+import DonasiTerkumpul from '../components/DonasiTerkumpul';
 
 function HomePage() {
   return (
@@ -13,7 +14,7 @@ function HomePage() {
      <Pohontermonitor/>
     <ProgramKami/> 
     <MitraKami/>
-
+    <DonasiTerkumpul/>
   </>
 
   );

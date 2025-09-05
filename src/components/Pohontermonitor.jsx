@@ -36,7 +36,7 @@ function PohonTermonitor() {
     };
 
     return (
-        <section className='bg-gray-50 min-h-screen py-16 md:py-24'>
+        <section className='bg-white min-h-fit py-16 md:py-14'>
             <div className='container mx-auto px-4'>
                 <div className='text-center mb-16'>
                     <h2 className="text-base font-semibold text-green-600 tracking-wide uppercase">
