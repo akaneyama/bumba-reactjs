@@ -1,7 +1,7 @@
 import React from 'react';
 
-import reactIcon from '../assets/react.svg';
-import imgkalkulatorkarbon from '../assets/KalkulatorKarbon.png';
+
+import imgkalkulatorkarbon from '../assets/kalkulatorkarbon.png';
 import imgCsrprovider from '../assets/csrprovider.png';
 import imgGeotagging from '../assets/geotagging.png';
 import imgDonasipohon from '../assets/donasipohon.png';

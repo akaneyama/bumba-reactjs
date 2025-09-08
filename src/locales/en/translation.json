@@ -1,0 +1,14 @@
+{
+    "header":{
+        "nav": {
+            "about": "About",
+            "services": "Services",
+            "blog": "Blog",
+            "faq": "FAQ",
+            "contact": "Contact"
+        },
+    "donateButton": "Donate"
+    }
+    
+    
+  }

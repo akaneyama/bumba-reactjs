@@ -1,0 +1,15 @@
+
+  {
+    "header":{
+        "nav": {
+            "about": "Tentang",
+            "services": "Layanan",
+            "blog": "Blog",
+            "faq": "FAQ",
+            "contact": "Kontak"
+          },
+          "donateButton": "Donasi"
+    }
+}
+    
+  
